@@ -12,7 +12,7 @@ const data = ref([
 
 <template>
   <div>
-    <el-card class="m-4 w-f">
+    <el-card class="w-full">
       <div>
         <el-button type="primary">添加用户</el-button>
         <el-button type="danger">批量删除</el-button>

@@ -24,6 +24,9 @@ const breadcrumbList = computed(() => {
       path: item.path.includes(':') ? undefined : item.path,
     }))
 })
+
+// 退出登录
+const handleLogout = () => {}
 </script>
 
 <template>
@@ -53,7 +56,7 @@ const breadcrumbList = computed(() => {
     <!-- right -->
     <div>
       <!-- avatar -->
-      <div class="user-info">
+      <div class="h-full user-info">
         <el-dropdown ref="user-dropdown" style="margin-right: 30px">
           <div class="flex items-center">
             <el-avatar :src="defaultAvatar" />
@@ -62,9 +65,9 @@ const breadcrumbList = computed(() => {
 
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item>个人中心</el-dropdown-item>
-              <el-dropdown-item>设置</el-dropdown-item>
-              <el-dropdown-item>退出登录</el-dropdown-item>
+              <el-dropdown-item icon="User">个人中心</el-dropdown-item>
+              <el-dropdown-item icon="Setting">设置</el-dropdown-item>
+              <el-dropdown-item icon="Guide" @click="handleLogout">退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>

@@ -29,8 +29,8 @@ const handleSelect = (path: string) => {
     }"
   >
     <div class="w-full flex justify-center items-center aside-logo">
-      <div></div>
-      <div v-if="!menuStore.isCollapse" class="text-white text-xl font-bold">Yunyi Admin</div>
+      <img class="logo-img" src="@/assets/logo.png" />
+      <div v-if="!menuStore.isCollapse" class="ml-2 text-white text-2xl font-bold">Yunyi Admin</div>
     </div>
     <div class="flex-1">
       <el-menu
@@ -85,6 +85,11 @@ const handleSelect = (path: string) => {
     border-bottom: 1px solid #101117;
     background: #191a23;
     height: 63px;
+
+    .logo-img {
+      height: 40px;
+      width: 57px;
+    }
   }
 
   .menu {

@@ -16,7 +16,9 @@ service.interceptors.request.use(
 
 // http response 拦截器
 service.interceptors.response.use(
-  async (response: AxiosResponse) => { }
+  async (response: AxiosResponse) => {
+    return response.data
+  }
 )
 
 export default service

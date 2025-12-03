@@ -1,4 +1,5 @@
 import service from '@/utils/request'
+import type { LoginReq } from '@/types/api/user'
 
 // @Summary 获取验证码
 // @Produce  application/json
@@ -14,7 +15,7 @@ export const captcha = () => {
 // @Produce  application/json
 // @Param data body {username:"string",password:"string"}
 // @Router /base/login [post]
-export const login = (data) => {
+export const login = (data: LoginReq) => {
   return service({
     url: '/base/login',
     method: 'post',

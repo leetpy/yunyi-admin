@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import { useRoute } from 'vue-router'
 import { Fold } from '@element-plus/icons-vue'
 import { useMenuStore } from '@/stores'
 
+const route = useRoute()
 const nickname = ref('Admin')
 
 // 菜单折叠
@@ -12,6 +14,16 @@ const menuCollapse = () => {
 }
 
 const defaultAvatar = 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
+
+const breadcrumbList = computed(() => {
+  return route.matched
+    .filter((item) => item.meta.title && item.meta.breadcrumb !== false)
+    .map((item) => ({
+      ...item,
+      // 可选：如果 path 是动态路由（如 /user/detail/123），保留原始 path
+      path: item.path.includes(':') ? undefined : item.path,
+    }))
+})
 </script>
 
 <template>
@@ -26,11 +38,14 @@ const defaultAvatar = 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726
 
       <div>
         <el-breadcrumb separator="/">
-          <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>
-          <el-breadcrumb-item>
-            <a href="/">promotion management</a>
+          <el-breadcrumb-item
+            v-for="(item, index) in breadcrumbList"
+            :key="index"
+            :to="{ path: item.path }"
+            replace
+          >
+            {{ item.meta.title }}
           </el-breadcrumb-item>
-          <el-breadcrumb-item>promotion list</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
     </div>

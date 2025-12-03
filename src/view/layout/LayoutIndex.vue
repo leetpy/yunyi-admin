@@ -13,6 +13,7 @@ import HeaderIndex from './header/HeaderIndex.vue'
     <!-- content part -->
     <div class="flex flex-col w-full">
       <header-index />
+      <router-view />
     </div>
   </div>
 </template>

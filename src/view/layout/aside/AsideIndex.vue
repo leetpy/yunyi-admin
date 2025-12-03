@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useMenuStore } from '@/stores'
 import { menus } from '@/router/menu'
 
+const route = useRoute()
 const router = useRouter()
 const menuStore = useMenuStore()
 
@@ -14,7 +15,9 @@ const layoutSideWidth = computed(() => {
     return '80px'
   }
 })
-const activeIndex = ref('2')
+const activeIndex = computed(():string => {
+  return route.path.split('/').pop()!;
+})
 
 const handleSelect = (path: string) => {
   router.push({ name: path })
